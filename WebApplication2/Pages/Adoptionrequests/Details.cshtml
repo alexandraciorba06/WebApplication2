@@ -1,0 +1,37 @@
+﻿@page
+@model WebApplication2.Pages.Adoptionrequests.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Adoptionrequest</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Adoptionrequest.AnimalID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Adoptionrequest.AnimalID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Adoptionrequest.UserID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Adoptionrequest.UserID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Adoptionrequest.RequestDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Adoptionrequest.RequestDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Adoptionrequest.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
