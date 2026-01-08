@@ -24,6 +24,6 @@ namespace WebApplication2.Models
         public ICollection<Animal>? Animals { get; set; }
 
 
-
+        ///dbhdb
     }
 }
