@@ -4,6 +4,8 @@
 
 namespace WebApplication2.Migrations
 {
+
+
     /// <inheritdoc />
     public partial class AddCategory : Migration
     {

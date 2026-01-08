@@ -20,11 +20,11 @@ builder.Services.AddDbContext<WebApplication2Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("WebApplication2Context") ?? throw new InvalidOperationException("Connection string 'WebApplication2Context' not found.")));
 
 builder.Services.AddDbContext<PetIdentityContext>(options =>
-  options.UseSqlServer(builder.Configuration.GetConnectionString("WebApplication2Context") ?? throw new InvalidOperationException("Connectionstring 'WebApplication2Context' not found."))); 
+  options.UseSqlServer(builder.Configuration.GetConnectionString("WebApplication2Context") ?? throw new InvalidOperationException("Connectionstring 'WebApplication2Context' not found.")));
 
 
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options =>options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<PetIdentityContext>();
 var app = builder.Build();
@@ -47,3 +47,4 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
