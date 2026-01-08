@@ -1,13 +1,32 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication2.Data;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy =>
+policy.RequireRole("Admin"));
+});
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Animals");
+    options.Conventions.AllowAnonymousToPage("/Animals/Index");
+    options.Conventions.AllowAnonymousToPage("/Animals/Details");
+    options.Conventions.AuthorizeFolder("/Members", "AdminPolicy");
+});
 builder.Services.AddDbContext<WebApplication2Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("WebApplication2Context") ?? throw new InvalidOperationException("Connection string 'WebApplication2Context' not found.")));
 
+builder.Services.AddDbContext<PetIdentityContext>(options =>
+  options.UseSqlServer(builder.Configuration.GetConnectionString("WebApplication2Context") ?? throw new InvalidOperationException("Connectionstring 'WebApplication2Context' not found."))); 
+
+
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<PetIdentityContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

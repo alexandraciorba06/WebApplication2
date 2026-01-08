@@ -16,7 +16,7 @@ namespace WebApplication2.Data
 
         public DbSet<WebApplication2.Models.Animal> Animal { get; set; } = default!;
         public DbSet<WebApplication2.Models.Shelter> Shelter { get; set; } = default!;
-        public DbSet<WebApplication2.Models.User> User { get; set; } = default!;
+        public DbSet<WebApplication2.Models.Member> Member { get; set; } = default!;
         public DbSet<WebApplication2.Models.Adoptionrequest> Adoptionrequest { get; set; } = default!;
         public DbSet<WebApplication2.Models.Category> Category { get; set; } = default!;
     }

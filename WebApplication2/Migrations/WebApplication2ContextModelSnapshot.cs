@@ -33,6 +33,9 @@ namespace WebApplication2.Migrations
                     b.Property<int>("AnimalID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("MemberID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("RequestDate")
                         .HasColumnType("datetime2");
 
@@ -41,7 +44,7 @@ namespace WebApplication2.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("MemberID");
 
                     b.ToTable("Adoptionrequest");
                 });
@@ -105,6 +108,36 @@ namespace WebApplication2.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("WebApplication2.Models.Member", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Member");
+                });
+
             modelBuilder.Entity("WebApplication2.Models.Shelter", b =>
                 {
                     b.Property<int>("ID")
@@ -138,42 +171,11 @@ namespace WebApplication2.Migrations
                     b.ToTable("Shelter");
                 });
 
-            modelBuilder.Entity("WebApplication2.Models.User", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("User");
-                });
-
             modelBuilder.Entity("WebApplication2.Models.Adoptionrequest", b =>
                 {
-                    b.HasOne("WebApplication2.Models.User", null)
+                    b.HasOne("WebApplication2.Models.Member", null)
                         .WithMany("Adoptionrequests")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MemberID");
                 });
 
             modelBuilder.Entity("WebApplication2.Models.Animal", b =>
@@ -191,14 +193,14 @@ namespace WebApplication2.Migrations
                     b.Navigation("Shelter");
                 });
 
+            modelBuilder.Entity("WebApplication2.Models.Member", b =>
+                {
+                    b.Navigation("Adoptionrequests");
+                });
+
             modelBuilder.Entity("WebApplication2.Models.Shelter", b =>
                 {
                     b.Navigation("Animals");
-                });
-
-            modelBuilder.Entity("WebApplication2.Models.User", b =>
-                {
-                    b.Navigation("Adoptionrequests");
                 });
 #pragma warning restore 612, 618
         }
