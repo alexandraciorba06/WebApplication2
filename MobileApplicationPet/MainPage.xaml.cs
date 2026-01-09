@@ -1,4 +1,4 @@
-﻿namespace MobileApplication1_
+﻿namespace MobileApplicationPet
 {
     public partial class MainPage : ContentPage
     {

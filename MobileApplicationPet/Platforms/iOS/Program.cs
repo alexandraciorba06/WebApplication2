@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace MobileApplication1_
+namespace MobileApplicationPet
 {
     public class Program
     {

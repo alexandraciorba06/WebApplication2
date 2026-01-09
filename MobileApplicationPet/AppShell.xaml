@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="MobileApplication1_.AppShell"
+    x:Class="MobileApplicationPet.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MobileApplication1_"
+    xmlns:local="clr-namespace:MobileApplicationPet"
     Shell.FlyoutBehavior="Disabled"
-    Title="MobileApplication1_">
+    Title="MobileApplicationPet">
 
     <ShellContent
         Title="Home"

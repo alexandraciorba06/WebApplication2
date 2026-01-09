@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace MobileApplication1_
+namespace MobileApplicationPet
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

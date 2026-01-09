@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace MobileApplication1_
+namespace MobileApplicationPet
 {
     public static class MauiProgram
     {
